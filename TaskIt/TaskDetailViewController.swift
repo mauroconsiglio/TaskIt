@@ -46,18 +46,14 @@ class TaskDetailViewController: UIViewController {
     
     @IBAction func doneBarButtonItemPressed(sender: UIBarButtonItem) {
         
-        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         detailTaskModel.task = taskTextField.text
         detailTaskModel.subtask = subtaskTextField.text
         detailTaskModel.date = dueDatePicker.date
         detailTaskModel.completed = detailTaskModel.completed
         
-        appDelegate.saveContext()
-
+        ModelManager.instance.saveContext()
+        
         self.navigationController?.popViewControllerAnimated(true)
         delegate?.taskDetailEdited!()
     }
-    
-
-    
 }
